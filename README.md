@@ -1,2 +1,2 @@
 # log-visualization-tools
-Visualization tools developed in Python 3.0 using the Pandas Library
+Log visualization tools (primarily for cybersecurity) developed in Python 3.0 using the Pandas Library
