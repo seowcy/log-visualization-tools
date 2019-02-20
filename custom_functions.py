@@ -206,8 +206,9 @@ def plot_all_heatmap(normalize=True):
     dump = ax.set_yticklabels(hm_all.index)
     dump = fig.tight_layout()
 
-def plot_sankey_from_file(filepath):
+def plot_sankey_from_file(filepath, save=True):
     import plotly
+    plotly.tools.set_credentials_file(username='seowcy', api_key='aNttfr621LjY18bkTkBP')
     import pandas as pd
     import os
     
@@ -250,10 +251,14 @@ def plot_sankey_from_file(filepath):
     )
 
     fig = dict(data=[data], layout=layout)
-    plotly.offline.plot(fig, filename="sankey-%s.html" % os.path.basename(filename), auto_open=False)
+    if save:
+        plotly.offline.plot(fig, filename="sankey-%s.html" % os.path.basename(filename), auto_open=False)
+    else:
+        plotly.offline.iplot(fig)
 
-def plot_sankey_from_df(df):
+def plot_sankey_from_df(df, save=True):
     import plotly
+    plotly.tools.set_credentials_file(username='seowcy', api_key='aNttfr621LjY18bkTkBP')
     import pandas as pd
     import os
     
@@ -294,10 +299,14 @@ def plot_sankey_from_df(df):
     )
 
     fig = dict(data=[data], layout=layout)
-    plotly.offline.plot(fig, filename="sankey-%s.html" % '-'.join(df["ip"].unique()), auto_open=False)
+    if save:
+        plotly.offline.plot(fig, filename="sankey-%s.html" % '-'.join(df["ip"].unique()), auto_open=False)
+    else:
+        plotly.offline.iplot(fig)
 
-def plot_sankey_from_results(results):
+def plot_sankey_from_results(results, save=True):
     import plotly
+    plotly.tools.set_credentials_file(username='seowcy', api_key='aNttfr621LjY18bkTkBP')
     import pandas as pd
     import os
     
@@ -337,7 +346,10 @@ def plot_sankey_from_results(results):
     )
 
     fig = dict(data=[data], layout=layout)
-    plotly.offline.plot(fig, filename="sankey-results.html", auto_open=False)
+    if save:
+        plotly.offline.plot(fig, filename="sankey-results.html", auto_open=False)
+    else:
+        plotly.offline.iplot(fig)
 
 def get_results(df):
     results = {'^': 0}
